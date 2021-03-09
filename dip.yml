@@ -1,0 +1,7 @@
+version: '4.1'
+
+interaction:
+  terraform:
+    service: terraform
+    compose_method: exec
+    command: terraform

@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  terraform:
+    container_name: sec-hub-account-service-terraform
+    build: "./images/terraform"
+    volumes:
+      - '.:/app'
+    environment:
+      - TF_VAR_localstack_url=http://localstack:4566
+  localstack:
+    container_name: sec-hub-account-service-localstack
+    image: localstack/localstack
+    ports:
+      - "127.0.0.1:4566:4566"
+    environment:
+      - SERVICES=apigateway,serverless
+      - DEFAULT_REGION=eu-west-1
+      - AWS_DEFAULT_REGION=eu-west-1
+      - HOSTNAME_EXTERNAL=localhost
+      - HOSTNAME=localstack
+      - USE_SSL=false
+      - DATA_DIR=/tmp/localstack/data
+      - DEBUG=1
+    volumes:
+      - ./.aws:/docker-entrypoint-initaws.d
