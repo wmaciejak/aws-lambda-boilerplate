@@ -5,6 +5,7 @@ data "archive_file" "lambda_zip" {
 }
 resource "aws_lambda_function" "hello_world" {
   function_name = "HelloWorld"
+  source_code_hash = "${data.archive_file.lambda_zip.output_base64sha256}"
   filename      = "function.rb.zip"
   handler       = "function.lambda_handler"
   runtime       = "ruby2.7"
