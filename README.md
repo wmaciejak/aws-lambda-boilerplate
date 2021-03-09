@@ -21,3 +21,10 @@ base_url = "http://localhost:4566/restapis/eogy4k52rs/dev/_user_request_/proxy"
 ```
 
 This `base_url` is the exact endpoint where you can find service.
+
+To update Lambda code you have to run:
+```
+terraform destroy
+terraform apply
+```
+
