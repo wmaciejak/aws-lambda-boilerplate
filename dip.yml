@@ -1,0 +1,15 @@
+version: '4.1'
+
+terraform_defaults: &terraform_defaults
+  service: terraform
+  compose_method: exec
+
+interaction:
+  terraform:
+    << : *terraform_defaults
+    description: Run terraform command
+    command: terraform
+
+provision:
+  - dip terraform init
+  - dip terraform apply -auto-approve
