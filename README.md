@@ -28,3 +28,25 @@ terraform destroy
 terraform apply
 ```
 
+### Setup using docker and dip
+
+Install [docker](https://docs.docker.com/get-docker/), [docker-compose](https://docs.docker.com/compose/install/) and [dip](https://github.com/bibendi/dip#installation).
+
+Start containers
+
+```
+dip compose up
+```
+
+Setup (this will run init & apply)
+
+```
+dip provision
+```
+
+To update lambda code
+
+```
+dip terraform destroy
+dip terraform apply
+```
