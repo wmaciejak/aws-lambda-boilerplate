@@ -10,4 +10,9 @@ resource "aws_lambda_function" "hello_world" {
   handler       = "function.lambda_handler"
   runtime       = "ruby2.7"
   role          = aws_iam_role.iam_role.arn
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
 }
