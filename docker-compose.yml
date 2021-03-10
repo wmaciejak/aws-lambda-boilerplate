@@ -16,7 +16,7 @@ services:
       - SERVICES=apigateway,serverless
       - DEFAULT_REGION=eu-west-1
       - AWS_DEFAULT_REGION=eu-west-1
-      - LAMBDA_EXECUTOR=docker
+      - LAMBDA_EXECUTOR=docker-reuse
       - DOCKER_HOST=unix:///var/run/docker.sock
       - HOSTNAME_EXTERNAL=localstack
       - HOSTNAME=localstack
