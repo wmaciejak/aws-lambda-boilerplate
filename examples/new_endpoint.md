@@ -62,7 +62,7 @@ lambda to the cloud infrastructure.
 ```
 data "archive_file" "new_lambda_zip" {
     type        = "zip"
-    source_file  = "source/new_lambda.rb"
+    source_file  = "sources/new_lambda.rb"
     output_path = "new_lambda.rb.zip"
 }
 ```
@@ -78,11 +78,11 @@ new lambda function.
 ```
 resource "aws_lambda_function" "new_lambda" {
   function_name    = "new_lambda"
-  source_code_hash = "${data.archive_file.new_lambda_zip.output_base64sha256}"
+  source_code_hash = data.archive_file.new_lambda_zip.output_base64sha256
   filename         = "new_lambda.rb.zip"
   handler          = "new_lambda.lambda_handler"
   runtime          = "ruby2.7"
-  role             = aws_iam_role.iam_role.arn
+  role             = aws_iam_role.this.arn
 }
 ```
 

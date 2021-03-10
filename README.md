@@ -75,6 +75,6 @@ The repository contains two types of files.
 
 Currently, we have few Terraform files:
 
-1. `main.tf`     - AWS resource definitions such as API Gateway, Lambdas, etc.
-2. `provider.tf` - localstack configuration allowing you to run it on localhost.
-3. `output.tf`   - This file describes output of Terraform execution. It might be useful to add new routes to this output when adding new functions.
+1. `main.tf`      - localstack provider configuration.
+2. `resources.tf` - resource definitions such as API Gateway, Lambda, etc.
+3. `outputs.tf`   - This file describes output of Terraform execution. It might be useful to add new routes to this output when adding new functions.

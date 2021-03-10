@@ -1,8 +1,3 @@
-variable "localstack_url" {
-  type = string
-  default = "http://localhost:4566"
-}
-
 provider "aws" {
     region                      = "eu-west-1"
     access_key                  = "123"
