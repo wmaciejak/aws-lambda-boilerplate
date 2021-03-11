@@ -8,7 +8,23 @@ interaction:
   terraform:
     << : *terraform_defaults
     description: Run terraform command
-    command: terraform
+    command: terraform -chdir=terraform
+  bash:
+    << : *terraform_defaults
+    description: Enter bash shell
+    command: bash
+  apply:
+    << : *terraform_defaults
+    description: Run terraform apply
+    command: terraform -chdir=terraform apply -auto-approve
+  init:
+    << : *terraform_defaults
+    description: Run terraform init
+    command: terraform -chdir=terraform init
+  destroy:
+    << : *terraform_defaults
+    description: Run terraform destroy
+    command: terraform -chdir=terraform destroy -auto-approve
 
 provision:
   - dip terraform init
