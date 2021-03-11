@@ -62,8 +62,8 @@ lambda to the cloud infrastructure.
 ```
 data "archive_file" "new_lambda_zip" {
     type        = "zip"
-    source_file  = "source/new_lambda.rb"
-    output_path = "new_lambda.rb.zip"
+    source_file  = "../sources/new_lambda.rb"
+    output_path = "../sources/new_lambda.rb.zip"
 }
 ```
 
@@ -78,11 +78,11 @@ new lambda function.
 ```
 resource "aws_lambda_function" "new_lambda" {
   function_name    = "new_lambda"
-  source_code_hash = "${data.archive_file.new_lambda_zip.output_base64sha256}"
+  source_code_hash = data.archive_file.new_lambda_zip.output_base64sha256
   filename         = "new_lambda.rb.zip"
   handler          = "new_lambda.lambda_handler"
   runtime          = "ruby2.7"
-  role             = aws_iam_role.iam_role.arn
+  role             = aws_iam_role.this.arn
 }
 ```
 
@@ -94,7 +94,7 @@ created above.
 Finally, we can connect the new lambda definition with the API Gateway function.
 
 ```
-resource "aws_api_gateway_integration" "new_lambda_integration" {
+resource "aws_api_gateway_integration" "new_lambda" {
    rest_api_id = aws_api_gateway_rest_api.service_api_gateway.id
    resource_id = aws_api_gateway_method.new_method_name.resource_id
    http_method = aws_api_gateway_method.new_method_name.http_method
@@ -115,15 +115,15 @@ The `new_lambda` is the name of the lambda definition.
 To make sure that the new integration is properly deployed we need to **MODIFY**
 the existing API Gateway deployment definition.
 
-Add the name of your new integration (`new_lambda_integration` from the example
+Add the name of your new integration (`new_lambda` from the example
 above) to the `depends_on` array.
 
 ```
 resource "aws_api_gateway_deployment" "hello_world" {
   depends_on = [
-    aws_api_gateway_integration.lambda_2_integration,
-    aws_api_gateway_integration.lambda_1_integration,
-    new_lambda_integration, # new integration goes here
+    aws_api_gateway_integration.lambda_2,
+    aws_api_gateway_integration.lambda_1,
+    new_lambda, # new integration goes here
   ]
 
   # ...
