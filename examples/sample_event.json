@@ -1,0 +1,116 @@
+{
+   "path":"/nested/lambda_2_nested_example",
+   "headers":{
+      "Remote-Addr":"172.22.0.1",
+      "Hidden":"Test",
+      "Content-Type":"application/json",
+      "User-Agent":"PostmanRuntime/7.26.2",
+      "Accept":"*/*",
+      "Postman-Token":"67d7f769-de90-40ab-b456-a631cd8488dc",
+      "Host":"localhost:4566",
+      "Accept-Encoding":"gzip, deflate, br",
+      "Connection":"keep-alive",
+      "Content-Length":"13",
+      "X-Forwarded-For":"172.22.0.1, localhost:4566, 127.0.0.1, localhost:4566",
+      "x-localstack-edge":"https://localhost:4566",
+      "Authorization":"AWS4-HMAC-SHA256 Credential=__internal_call__/20160623/eu-west-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date;x-amz-target, Signature=1234"
+   },
+   "multiValueHeaders":{
+      "Remote-Addr":[
+         "172.22.0.1"
+      ],
+      "Hidden":[
+         "Test"
+      ],
+      "Content-Type":[
+         "application/json"
+      ],
+      "User-Agent":[
+         "PostmanRuntime/7.26.2"
+      ],
+      "Accept":[
+         "*/*"
+      ],
+      "Postman-Token":[
+         "67d7f769-de90-40ab-b456-a631cd8488dc"
+      ],
+      "Host":[
+         "localhost:4566"
+      ],
+      "Accept-Encoding":[
+         "gzip, deflate, br"
+      ],
+      "Connection":[
+         "keep-alive"
+      ],
+      "Content-Length":[
+         "13"
+      ],
+      "X-Forwarded-For":[
+         "172.22.0.1, localhost:4566, 127.0.0.1, localhost:4566"
+      ],
+      "x-localstack-edge":[
+         "https://localhost:4566"
+      ],
+      "Authorization":[
+         "AWS4-HMAC-SHA256 Credential=__internal_call__/20160623/eu-west-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date;x-amz-target, Signature=1234"
+      ]
+   },
+   "pathParameters":{
+      
+   },
+   "body":"{\"param1\": 1}",
+   "isBase64Encoded":false,
+   "resource":"/restapis/8qpnt0pubg/dev/_user_request_/nested/lambda_2_nested_example?a=1&b[]=2&b[]=3&c[d]=4&e=5&e=6",
+   "httpMethod":"POST",
+   "queryStringParameters":{
+      "a":"1",
+      "b[]":[
+         "2",
+         "3"
+      ],
+      "c[d]":"4",
+      "e":[
+         "5",
+         "6"
+      ]
+   },
+   "multiValueQueryStringParameters":{
+      "a":[
+         "1"
+      ],
+      "b[]":[
+         [
+            "2",
+            "3"
+         ]
+      ],
+      "c[d]":[
+         "4"
+      ],
+      "e":[
+         [
+            "5",
+            "6"
+         ]
+      ]
+   },
+   "requestContext":{
+      "path":"/dev/nested/lambda_2_nested_example",
+      "accountId":"000000000000",
+      "resourceId":"6nhl0tnnrd",
+      "stage":"dev",
+      "identity":{
+         "accountId":"000000000000",
+         "sourceIp":"127.0.0.1",
+         "userAgent":"PostmanRuntime/7.26.2"
+      },
+      "httpMethod":"POST",
+      "protocol":"HTTP/1.1",
+      "requestTime":"2021-03-11T08:22:30.368Z",
+      "requestTimeEpoch":1615450950368
+   },
+   "stageVariables":{
+      
+   }
+}

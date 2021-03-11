@@ -149,6 +149,8 @@ In particular:
 * `event["queryStringParameters"]` - query string params (Hash), e.g. for "a=1&b[]=2&b[]=3&c[d]=4&e=5&e=6", it returns {"a"=>"1", "b[]"=>["2", "3"], "c[d]"=>"4", "e"=>["5", "6"]}
 * environment variables are accessible using standard `ENV["var_name"]`
 
+In the `sample_event.json` file you can find entire event dumped as JSON.
+
 To return correct response body to the API Gateway, the `lambda_handler` method
 needs to return following hash
 
