@@ -129,3 +129,33 @@ resource "aws_api_gateway_deployment" "hello_world" {
   # ...
 }
 ```
+
+## Lambda implementation
+
+The lambda implementation is defined in *.rb files containing `lambda_handler` method.
+They can look like this:
+
+```
+def lambda_handler(event:, context:)
+  # some code
+end
+```
+
+`event` attribute contains all the informations about the request, environment and more.
+In particular:
+
+* `event["headers"]` - request header (Hash), e.g. { "Content-Type"=>"application/json", "User-Agent"=>"PostmanRuntime/7.26.2" }
+* `event["body"]` - request body (String), e.g. "{\"param1\": 1}"
+* `event["queryStringParameters"]` - query string params (Hash), e.g. for "a=1&b[]=2&b[]=3&c[d]=4&e=5&e=6", it returns {"a"=>"1", "b[]"=>["2", "3"], "c[d]"=>"4", "e"=>["5", "6"]}
+* environment variables are accessible using standard `ENV["var_name"]`
+
+To return correct response body to the API Gateway, the `lambda_handler` method
+needs to return following hash
+
+```
+{
+  statusCode: 200, # or any other code
+  body: response_body, # Sting or Hash
+}
+```
+
