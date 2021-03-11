@@ -113,4 +113,9 @@ resource "aws_lambda_function" "lambda_2" {
   handler          = "lambda2.lambda_handler"
   runtime          = "ruby2.7"
   role             = aws_iam_role.this.arn
+  environment {
+    variables = {
+      foo = "bar"
+    }
+  }
 }
