@@ -1,13 +1,21 @@
+resource "null_resource" "unzip_lambda1" {
+  provisioner "local-exec" {
+    command = "unzip -o -d ../sources/lambda1 ../sources/lambda1/layer.zip"
+  }
+}
+
 data "archive_file" "lambda1_zip" {
   type        = "zip"
-  source_file  = "../sources/lambda1.rb"
-  output_path = "../sources/lambda_1.rb.zip"
+  source_dir  = "../sources/lambda1"
+  output_path = "../sources/lambda1/lambda1.rb.zip"
+
+  depends_on = [null_resource.unzip_lambda1]
 }
 
 data "archive_file" "lambda2_zip" {
   type        = "zip"
-  source_file = "../sources/lambda2.rb"
-  output_path = "../sources/lambda_2.rb.zip"
+  source_dir = "../sources/lambda2"
+  output_path = "../sources/lambda2/lambda2.rb.zip"
 }
 
 # IAM
@@ -96,20 +104,39 @@ resource "aws_api_gateway_deployment" "hello_world" {
   stage_name  = "dev"
 }
 
+# DynamoDB
+resource "aws_dynamodb_table" "accounts" {
+  read_capacity  = 20
+  write_capacity = 20
+  name           = "accounts"
+  hash_key       = "subdomain"
+
+  attribute {
+    name = "subdomain"
+    type = "S"
+  }
+}
+
 # LAMBDA
 resource "aws_lambda_function" "lambda_1" {
   function_name    = "lambda_1"
   source_code_hash = data.archive_file.lambda1_zip.output_base64sha256
-  filename         = "../sources/lambda_1.rb.zip"
+  filename         = "../sources/lambda1/lambda1.rb.zip"
   handler          = "lambda1.lambda_handler"
   runtime          = "ruby2.7"
   role             = aws_iam_role.this.arn
+
+  environment {
+    variables = {
+      GEM_PATH = "gems/2.7.0"
+    }
+  }
 }
 
 resource "aws_lambda_function" "lambda_2" {
   function_name    = "lambda_2"
   source_code_hash = data.archive_file.lambda2_zip.output_base64sha256
-  filename         = "../sources/lambda_2.rb.zip"
+  filename         = "../sources/lambda2/lambda2.rb.zip"
   handler          = "lambda2.lambda_handler"
   runtime          = "ruby2.7"
   role             = aws_iam_role.this.arn

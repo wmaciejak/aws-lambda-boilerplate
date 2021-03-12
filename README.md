@@ -68,13 +68,21 @@ dip terraform apply
 
 ## Development
 
-The repository contains two types of files.
-
-1. `*.rb` files that contain ruby source code of particular lambda functions
-2. `*.tf` files that contain terraform definitions of AWS services
+The repository contains a few directories:
+1. `examples` - contain many useful documents and sample requests which might be useful to gather knowledge about our services before touching code.
+2. `layers` - it's the place for storing [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). There are some differences in terms of constructing layers, but it would be described in a separated article.
+3. `sources` - source code of our lambda functions
+4. `terraform` - defitions of terraform resources.
 
 Currently, we have few Terraform files:
-
 1. `main.tf`      - localstack provider configuration.
 2. `resources.tf` - resource definitions such as API Gateway, Lambda, etc.
 3. `outputs.tf`   - This file describes output of Terraform execution. It might be useful to add new routes to this output when adding new functions.
+4. `variables.tf` - definitions of global variables available in templates
+
+### Guides
+
+1. [How to add new lambda function and integrate it with API Gateway](examples/new_endpoint.md)
+2. [How lambda argument - `event` may looks like](examples/sample_event.json)
+3. [How to create new Lambda Layer and provision it to function](examples/new_layer.md)
+4. [How to add new AWS service to Localstack and use it in Terraform](examples/new_service.md)

@@ -8,5 +8,6 @@ provider "aws" {
         lambda      = var.localstack_url
         apigateway  = var.localstack_url
         iam         = var.localstack_url
+        dynamodb    = var.localstack_url
     }
 }
