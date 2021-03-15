@@ -1,14 +1,14 @@
 version: '3.7'
 services:
   terraform:
-    container_name: sec-hub-account-service-terraform
+    container_name: sec-hub-hello-world-lambda-terraform
     build: "./images/terraform"
     volumes:
       - '.:/app'
     environment:
       - TF_VAR_localstack_url=http://localstack:4566
   localstack:
-    container_name: sec-hub-account-service-localstack
+    container_name: sec-hub-hello-world-lambda-localstack
     image: localstack/localstack:0.12.7
     ports:
       - "127.0.0.1:4566:4566"
