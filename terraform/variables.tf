@@ -1,4 +1,4 @@
 variable "localstack_url" {
-  type = string
+  type    = string
   default = "http://localhost:4566"
 }

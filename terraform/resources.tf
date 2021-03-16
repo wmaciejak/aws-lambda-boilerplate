@@ -14,16 +14,16 @@ data "archive_file" "lambda1_zip" {
 
 data "archive_file" "lambda2_zip" {
   type        = "zip"
-  source_dir = "../sources/lambda2"
+  source_dir  = "../sources/lambda2"
   output_path = "../sources/lambda2/lambda2.rb.zip"
 }
 
 # IAM
 resource "aws_iam_role" "this" {
-  name = "this"
-  max_session_duration=3600
-  description        = "None"
-  assume_role_policy = <<EOS
+  name                 = "this"
+  max_session_duration = 3600
+  description          = "None"
+  assume_role_policy   = <<EOS
 {
     "Version": "2012-10-17",
     "Statement": [
