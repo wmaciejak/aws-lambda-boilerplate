@@ -1,6 +1,6 @@
-resource "null_resource" "unzip_lambda1" {
+resource "null_resource" "build_layer_lambda1" {
   provisioner "local-exec" {
-    command = "unzip -o -d ../sources/lambda1 ../sources/lambda1/layer.zip"
+    command = "cd ../sources/lambda1 && sh build_custom_layer.sh"
   }
 }
 
@@ -9,7 +9,7 @@ data "archive_file" "lambda1_zip" {
   source_dir  = "../sources/lambda1"
   output_path = "../sources/lambda1/lambda1.rb.zip"
 
-  depends_on = [null_resource.unzip_lambda1]
+  depends_on = [null_resource.build_layer_lambda1]
 }
 
 data "archive_file" "lambda2_zip" {
@@ -125,6 +125,8 @@ resource "aws_lambda_function" "lambda_1" {
   handler          = "lambda1.lambda_handler"
   runtime          = "ruby2.7"
   role             = aws_iam_role.this.arn
+
+  depends_on = [data.archive_file.lambda1_zip]
 
   environment {
     variables = {

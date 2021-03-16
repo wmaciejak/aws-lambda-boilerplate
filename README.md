@@ -69,9 +69,8 @@ dip apply
 
 The repository contains a few directories:
 1. `examples` - contain many useful documents and sample requests which might be useful to gather knowledge about our services before touching code.
-2. `layers` - it's the place for storing [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). There are some differences in terms of constructing layers, but it would be described in a separated article.
-3. `sources` - source code of our lambda functions
-4. `terraform` - defitions of terraform resources.
+2. `sources` - source code of our lambda functions
+3. `terraform` - defitions of terraform resources.
 
 Currently, we have few Terraform files:
 1. `main.tf`      - localstack provider configuration.
