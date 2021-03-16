@@ -62,8 +62,7 @@ dip provision
 To update lambda code
 
 ```
-dip terraform destroy
-dip terraform apply
+dip apply
 ```
 
 ## Development
