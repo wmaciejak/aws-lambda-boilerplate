@@ -1,6 +1,6 @@
 resource "null_resource" "build_layer_lambda1" {
   provisioner "local-exec" {
-    command = "cd ../sources/lambda1 && sh build_custom_layer.sh"
+    command = "cd ../sources && sh ./build_custom_layer.sh lambda1"
   }
 }
 
