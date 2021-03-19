@@ -15,8 +15,7 @@ Here are some articles that we suggest you familiarize yourself with first:
 ## Setup
 
 To setup the service, ensure that you have [terraform](https://www.terraform.io/)
-installed and [Localstack](https://github.com/localstack/localstack) docker
-image with env variable attached `SERVICES=apigateway,serverless`.
+installed and [sec-hub-localstack](https://github.com/systems-engineering/sec-hub-localstack) service operational.
 
 Then run:
 
