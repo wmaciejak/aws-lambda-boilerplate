@@ -19,12 +19,6 @@ bundle add faraday --skip-install
 
 **This step is NOT consistent with a standard way of Lambda Layer creation**
 
-Now you have to copy prepared script which will automatically build whole layer during terraform init.
-
-```bash
-cp sources/build_custom_layer.sh sources/lambda1/build_custom_layer.sh
-```
-
 ## Attach newly packaged layer to Lambda function (in our case `lambda_1`)
 
 In this step, you have provide a definition of layers into Terraform. You have to add this code into `resources.tf`
@@ -32,7 +26,7 @@ In this step, you have provide a definition of layers into Terraform. You have t
 ```terraform
 resource "null_resource" "build_layer_lambda1" {
   provisioner "local-exec" {
-    command = "cd ../sources/lambda1 && sh build_custom_layer.sh"
+    command = "cd ../sources && sh ./build_custom_layer.sh lambda1"
   }
 }
 

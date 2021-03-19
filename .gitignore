@@ -1,4 +1,7 @@
-gems
-terraform/terraform.tfstate*
-terraform/.terraform/
-*.zip
+*.tfvars
+*.tfstate*
+.terraform*
+*.hcl
+sources/*/gems
+*.rb.zip
+*.DS_Store
