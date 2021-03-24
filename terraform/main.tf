@@ -1,7 +1,7 @@
 provider "aws" {
-  region                      = "eu-west-1"
-  access_key                  = "123"
-  secret_key                  = "qwe"
+  region                      = var.aws_region
+  access_key                  = var.aws_access_key
+  secret_key                  = var.aws_secret_key
   skip_requesting_account_id  = true
   skip_credentials_validation = true
   endpoints {
