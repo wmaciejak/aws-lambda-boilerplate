@@ -20,6 +20,6 @@ def lambda_handler(event:, context:)
 
   {
     statusCode: 200,
-    body: JSON.generate(response_body),
+    body: response_body,
   }
 end
