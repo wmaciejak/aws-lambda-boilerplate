@@ -11,3 +11,9 @@ provider "aws" {
     dynamodb   = var.localstack_url
   }
 }
+
+terraform {
+  backend "local" {
+    path = "tfstate/terraform.tfstate"
+  }
+}
