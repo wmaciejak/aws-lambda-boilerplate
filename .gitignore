@@ -1,6 +1,5 @@
 /terraform/.terraform
 /terraform/tfstate
-/terraform/.terraform.lock.hcl
 *.tfvars
 sources/*/gems
 *.rb.zip
