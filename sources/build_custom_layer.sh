@@ -2,13 +2,14 @@
 
 image=amazon/aws-sam-cli-build-image-ruby2.7
 module=$1
+sources_dir="${LAMBDA_SOURCES_DIR:-$PWD}"
 
 if [ -z "$module" ]; then
   echo "Usage: $0 <module>"
   exit 1
 fi
 
-docker run --rm -v $PWD/$module:/var/layer -w /var/layer $image sh -c "
+docker run --rm -v $sources_dir/$module:/var/layer -w /var/layer $image sh -c "
   set -x \
   && rm -rf gems \
   && bundle config set --local path 'gems' \
