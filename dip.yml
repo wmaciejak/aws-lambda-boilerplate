@@ -27,5 +27,8 @@ interaction:
     command: terraform -chdir=terraform destroy -auto-approve
 
 provision:
+  - dip compose down -v
+  - dip compose build
+  - dip compose up -d
   - dip init
   - dip apply
