@@ -1,6 +1,6 @@
 output "lambda_1_url" {
   value = (
-    var.localstack_url == "" ?
+    var.mode == "aws" ?
     format(
       "https://%s.execute-api.%s.amazonaws.com/%s%s",
       aws_api_gateway_rest_api.hello_world.id,
@@ -21,7 +21,7 @@ output "lambda_1_url" {
 
 output "lambda_2_url" {
   value = (
-    var.localstack_url == "" ?
+    var.mode == "aws" ?
     format(
       "https://%s.execute-api.%s.amazonaws.com/%s%s",
       aws_api_gateway_rest_api.hello_world.id,
@@ -42,7 +42,7 @@ output "lambda_2_url" {
 
 output "lambda_3_url" {
   value = (
-    var.localstack_url == "" ?
+    var.mode == "aws" ?
     format(
       "https://%s.execute-api.%s.amazonaws.com/%s%s",
       aws_api_gateway_rest_api.hello_world.id,
@@ -59,4 +59,8 @@ output "lambda_3_url" {
       aws_api_gateway_resource.lambda_3.path
     )
   )
+}
+
+output "mode" {
+  value = var.mode
 }
