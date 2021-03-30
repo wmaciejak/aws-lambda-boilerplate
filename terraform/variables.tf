@@ -23,6 +23,10 @@ variable "localstack_url" {
   default = "http://localhost:4566"
 }
 
+variable "mode" {
+  default = "localstack" # (localstack|aws)
+}
+
 variable "workspace" {
   description = "Workspace name" # e.g. sec-001
   default     = ""
