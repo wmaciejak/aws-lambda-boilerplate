@@ -17,6 +17,19 @@ Here are some articles that we suggest you familiarize yourself with first:
 To setup the service, ensure that you have [terraform](https://www.terraform.io/)
 installed and [sec-hub-localstack](https://github.com/systems-engineering/sec-hub-localstack) service operational.
 
+If you're running the setup process locally, then execute the following block, otherwise you can skip it:
+
+```bash
+cd terraform/
+cat > local.tf <<'EOF'
+terraform {
+  backend "local" {
+    path = "tfstate/terraform.tfstate"
+  }
+}
+EOF
+```
+
 Then run:
 
 ```bash
