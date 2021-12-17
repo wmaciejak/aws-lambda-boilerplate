@@ -1,8 +1,10 @@
-variable "api_gateway_deployment_stage_name" {
-  description = ""
-  default     = "dev"
+variable "ci" {
+  default = false
 }
 
+variable "root_rest_api_execution_arn" {
+  type = string
+}
 variable "aws_access_key" {
   description = "AWS Access Key ID"
   default     = "123"

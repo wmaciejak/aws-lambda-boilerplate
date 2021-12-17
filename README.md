@@ -30,52 +30,7 @@ terraform {
 EOF
 ```
 
-Then run:
-
-```bash
-terraform init
-terraform apply
-```
-
-When everything will succeed, it would mean that you have a locally run new
-an endpoint that points to your service. For the output of the above-mentioned
-commands you should see something like:
-
-```
-Outputs:
-
-base_url = "http://localhost:4566/restapis/eogy4k52rs/dev/_user_request_/proxy"
-```
-
-This `base_url` is the exact endpoint where you can find service.
-
-To update Lambda code you have to run:
-```
-terraform destroy
-terraform apply
-```
-
-### Setup using docker and dip
-
-Install [docker](https://docs.docker.com/get-docker/), [docker-compose](https://docs.docker.com/compose/install/) and [dip](https://github.com/bibendi/dip#installation).
-
-Start containers
-
-```
-dip compose up
-```
-
-Setup (this will run init & apply)
-
-```
-dip provision
-```
-
-To update lambda code
-
-```
-dip apply
-```
+Remember that this repository is responsible for definition of Lambda functions and it's not standalone - we cannot run it without integration to 3rd part services. To have operational endpoint where this logic will be attached we have to setup also the [Root Service](https://github.com/systems-engineering/sec-hub-root-service).
 
 ## Development
 
@@ -86,11 +41,18 @@ The repository contains a few directories:
 
 Currently, we have few Terraform files:
 1. `main.tf`      - localstack provider configuration.
-2. `resources.tf` - resource definitions such as API Gateway, Lambda, etc.
-3. `outputs.tf`   - This file describes output of Terraform execution. It might be useful to add new routes to this output when adding new functions.
+2. `resources.tf` - resource definitions such as DynamoDB, Lambda, etc.
+3. `outputs.tf`   - This file describes output of Terraform execution.
 4. `variables.tf` - definitions of global variables available in templates
 
+## Testing
+
+Lambda functions are easily testable. To create tests for particular function we have to create tests in `specs` directory. To run tests just go to the `specs` directory and execute command `rspec lambda1_spec.rb`.
+
+Remember that in testing environment we don't have fully functional and repeatable routing environment so we have to mock all invocations of particular function.
 ### Guides
+
+If in guides you will find prefix `[Root Service]` it means that you have to setup this part inside [Root Service](https://github.com/systems-engineering/sec-hub-root-service).
 
 1. [How to add new lambda function and integrate it with API Gateway](examples/new_endpoint.md)
 2. [How lambda argument - `event` may looks like](examples/sample_event.json)

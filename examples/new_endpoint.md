@@ -4,7 +4,7 @@ This example takes you through how to add a new API gateway endpoint and hook it
 up to a new lambda. This is a good way to add existing functionality to a
 service or to create a new service with multiple endpoints.
 
-## Add API Gateway resource
+## [Root Service] Add API Gateway resource
 
 We use Terraform template to add a new API Gateway resource.
 
@@ -31,7 +31,7 @@ The `parent_id` indicates if you want to nest your resource under another
 resource. The current example puts the resource as a first-class resource under
 the root of the API Gateway.
 
-## Add API Gateway method
+## [Root Service] Add API Gateway method
 
 This is the function that the API Gateway calls when the above resource is hit
 by an HTTP request.
@@ -89,7 +89,7 @@ resource "aws_lambda_function" "new_lambda" {
 Here, the `source_code_hash` uses the name of the deployment definition we just
 created above.
 
-## Connect the API Gateway and lambda
+## [Root Service] Connect the API Gateway and lambda
 
 Finally, we can connect the new lambda definition with the API Gateway function.
 
@@ -110,7 +110,7 @@ definition.
 
 The `new_lambda` is the name of the lambda definition.
 
-## Add integration to deployment
+## [Root Service] Add integration to deployment
 
 To make sure that the new integration is properly deployed we need to **MODIFY**
 the existing API Gateway deployment definition.
