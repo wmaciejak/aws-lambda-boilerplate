@@ -30,6 +30,6 @@ variable "mode" {
 }
 
 variable "workspace" {
-  description = "Workspace name" # e.g. sec-001
+  description = "Workspace name"
   default     = ""
 }

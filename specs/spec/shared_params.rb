@@ -62,6 +62,6 @@ def headers
     "Cookie": "_legacy_auth0.is.authenticated=true; auth0.is.authenticated=true",
     "X-Forwarded-For": "192.168.0.1, localhost:4566, 127.0.0.1, localhost:4566",
     "x-localstack-edge": "https://localhost:4566",
-    "Authorization": "AWS4-HMAC-SHA256 Credential=__internal_call__/20160623/eu-west-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date;x-amz-target, Signature=1234"
+    "Authorization": "test"
   }
 end

@@ -1,13 +1,13 @@
 version: '3.7'
 services:
   terraform:
-    container_name: sec-hub-hello-world-lambda-terraform
+    container_name: hello-world-lambda-terraform
     build: "./images/terraform"
     volumes:
       - '.:/app'
       - /var/run/docker.sock:/var/run/docker.sock
-      - sec-hub-hello-world-lambda-tfstate:/app/terraform/tfstate
-      - sec-hub-hello-world-lambda-tfmodules:/app/terraform/.terraform
+      - hello-world-lambda-tfstate:/app/terraform/tfstate
+      - hello-world-lambda-tfmodules:/app/terraform/.terraform
     environment:
       - TF_VAR_localstack_url=http://localstack:4566
       - "LAMBDA_SOURCES_DIR=${PWD}/sources"
@@ -15,10 +15,10 @@ services:
 networks:
   default:
     external:
-      name: sec-hub-hello-world-lambda-network
+      name: hello-world-lambda-network
 
 volumes:
-  sec-hub-hello-world-lambda-tfstate:
-    name: sec-hub-hello-world-lambda-tfstate
-  sec-hub-hello-world-lambda-tfmodules:
-    name: sec-hub-hello-world-lambda-tfmodules
+  hello-world-lambda-tfstate:
+    name: hello-world-lambda-tfstate
+  hello-world-lambda-tfmodules:
+    name: hello-world-lambda-tfmodules

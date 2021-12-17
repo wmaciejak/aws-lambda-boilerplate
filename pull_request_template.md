@@ -5,8 +5,8 @@ Please remember to:
 * Create a draft Pull Request to get initial feedback
 
 TODO:
-- [ ] Update confluence documentation
-- [ ] Add SEC task number and short explenation to CHANGELOG.md
+- [ ] Update documentation
+- [ ] Add task number and short explenation to CHANGELOG.md
 
 REVIEW STEPS:
 - [ ] Are we passing `Terraform fmt` command?

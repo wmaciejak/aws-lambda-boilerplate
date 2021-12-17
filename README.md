@@ -1,7 +1,6 @@
-# SEC-Hub - Hello world service
+# AWS Lambda boilerplate
 
-This repository serves as a clonable template for service in the SEC-Hub
-service architecture.
+This repository serves as a clonable template for service AWS lambda service architecture.
 
 Clone this repository, and change the services to suit the needs of your new
 service. We have provided a few examples in the examples folder.
@@ -14,8 +13,7 @@ Here are some articles that we suggest you familiarize yourself with first:
 
 ## Setup
 
-To setup the service, ensure that you have [terraform](https://www.terraform.io/)
-installed and [sec-hub-localstack](https://github.com/systems-engineering/sec-hub-localstack) service operational.
+To setup the service, ensure that you have [terraform](https://www.terraform.io/) installed and localstack service operational.
 
 If you're running the setup process locally, then execute the following block, otherwise you can skip it:
 
@@ -30,7 +28,7 @@ terraform {
 EOF
 ```
 
-Remember that this repository is responsible for definition of Lambda functions and it's not standalone - we cannot run it without integration to 3rd part services. To have operational endpoint where this logic will be attached we have to setup also the [Root Service](https://github.com/systems-engineering/sec-hub-root-service).
+Remember that this repository is responsible for definition of Lambda functions and it's not standalone - we cannot run it without integration to 3rd part services. To have operational endpoint where this logic will be attached we have to setup also the Root Service(private)
 
 ## Development
 
@@ -52,7 +50,7 @@ Lambda functions are easily testable. To create tests for particular function we
 Remember that in testing environment we don't have fully functional and repeatable routing environment so we have to mock all invocations of particular function.
 ### Guides
 
-If in guides you will find prefix `[Root Service]` it means that you have to setup this part inside [Root Service](https://github.com/systems-engineering/sec-hub-root-service).
+If in guides you will find prefix `[Root Service]` it means that you have to setup this part inside Root Service(private)
 
 1. [How to add new lambda function and integrate it with API Gateway](examples/new_endpoint.md)
 2. [How lambda argument - `event` may looks like](examples/sample_event.json)
