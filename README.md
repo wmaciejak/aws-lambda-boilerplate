@@ -28,7 +28,7 @@ terraform {
 EOF
 ```
 
-Remember that this repository is responsible for definition of Lambda functions and it's not standalone - we cannot run it without integration to 3rd part services. To have operational endpoint where this logic will be attached we have to setup also the Root Service(private)
+Remember that this repository is responsible for definition of Lambda functions and it's not standalone - we cannot run it without integration to 3rd part services. To have operational endpoint where this logic will be attached we have to setup also the [Root Service](http://github.com/wmaciejak/aws-lambda-root-service)
 
 ## Development
 
@@ -50,7 +50,7 @@ Lambda functions are easily testable. To create tests for particular function we
 Remember that in testing environment we don't have fully functional and repeatable routing environment so we have to mock all invocations of particular function.
 ### Guides
 
-If in guides you will find prefix `[Root Service]` it means that you have to setup this part inside Root Service(private)
+If in guides you will find prefix `[Root Service]` it means that you have to setup this part inside [Root Service](http://github.com/wmaciejak/aws-lambda-root-service)
 
 1. [How to add new lambda function and integrate it with API Gateway](examples/new_endpoint.md)
 2. [How lambda argument - `event` may looks like](examples/sample_event.json)
